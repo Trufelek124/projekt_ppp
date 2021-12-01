@@ -27,6 +27,9 @@ def return_available_backends_and_sim():
     return available_backends_names;
 
 def get_backend(name):
+    if name == "qasm_simulator":
+        simulator = Aer.get_backend('qasm_simulator')
+        return simulator
     provider = IBMQ.get_provider(hub='ibm-q');
     backend = provider.get_backend(name)
     return backend

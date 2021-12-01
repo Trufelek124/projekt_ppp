@@ -5,7 +5,7 @@ import num_to_binary_converter as nbc
 from qiskit import *
 
 # function responsible for running all circuits on selected backend
-def run_program_on_backend(backend):
+def run_program_on_backend(backend, num_of_shots):
     # Dividing circuits to batches optimizes time needed to run them.
     # IBMQ program allows for running 5 circuits simultaneously
     circuits_to_run = []
@@ -16,13 +16,13 @@ def run_program_on_backend(backend):
         circuits_to_run.append(transpiled)
         print("Transpiled circuit " + str(i))
 
-    run_experiment(circuits_to_run, backend)
+    run_experiment(circuits_to_run, backend, num_of_shots)
 
 
 # Function responsible for running batch of 4 quantum circuits simultaneously on selected backend
-def run_experiment(circuits_to_run, backend):
+def run_experiment(circuits_to_run, backend, num_of_shots):
     print("Running " + str(len(circuits_to_run)) + " circuits (hopefully)")
-    job = backend.run(circuits_to_run);
+    job = backend.run(circuits_to_run, shots=num_of_shots);
 
     result = job.result().get_counts();
     print(result)

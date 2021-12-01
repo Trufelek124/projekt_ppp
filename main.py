@@ -11,10 +11,11 @@ def main():
 
     # backends = qss.return_available_backends_and_sim()
     # print(backends)
+    backend_name="qasm_simulator"
+    num_of_shots=1024
 
-    backend = qss.get_backend("ibmq_quito")
-    simulator = Aer.get_backend('qasm_simulator')
-    iqs.run_program_on_backend(simulator)
+    backend = qss.get_backend(backend_name)
+    iqs.run_program_on_backend(backend, num_of_shots)
 
     print("elo2")
 
@@ -28,6 +29,9 @@ def setup_quantum_connection():
 # moze liczbę powtórzeń
 # będzie zwracało tablicę z wynikami
 # moze po 5 obliczeń na raz, zeby było szybciej
+
+
 # na dockerze zeby stało
 # po stronie frontu - rusować normalną sinusoidę
+# nie musi być logowania
 main()
