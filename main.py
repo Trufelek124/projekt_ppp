@@ -9,8 +9,6 @@ def main():
     print("elo!")
     setup_quantum_connection()
 
-    # backends = qss.return_available_backends_and_sim()
-    # print(backends)
     backend_name="qasm_simulator"
     num_of_shots=1024
 
