@@ -1,5 +1,0 @@
-flask
-qiskit
-pandas
-numpy
-matplotlib
